@@ -1,34 +1,28 @@
 import React from 'react'
-import { useQuery } from 'react-query'
-import axios from "axios"
-
-const fetchSuperHeroes = () => {
-    return axios.get('http://localhost:4000/superheroes')
-}
+import { useSuperHeroesData } from '../hooks/useSuperHeroesData'
+import { Link } from 'react-router-dom'
 
 export const RQSuperHeroesPage = () => {
 
-    const { isLoading, data, isError, error, isRefetching } = useQuery("super-heroes", fetchSuperHeroes)
+    const { isLoading, data, isError, error, isFetching, refetch } = useSuperHeroesData()
 
-    if (isLoading) {
+    if (isLoading || isFetching) {
         return <h2>Loading...</h2>
     }
 
-    
+
     if (isError) {
         return <h2>{error.message}</h2>
     }
 
-    if(isRefetching) {
-        return <h2>Refetching...</h2>
-    }
+    console.log({ isLoading, isFetching })
 
     return (
         <>
             <h2>RQSuperHeroes Page</h2>
             {
-                data?.data.map(hero => {
-                    return <div key={hero.id}>{hero.name}</div>
+                data?.data.map((hero) => {
+                    return <Link to={`/rq-super-heroes/${hero.id}`}><div key={hero.name}>{hero.name}</div></Link>
                 })
             }
         </>

@@ -14,11 +14,30 @@
             "id": 3,
             "name": "Wonder Woman",
             "alterEgo": "Princess Diana"
+        },
+        {
+            "id": 4,
+            "name": "Captain America",
+            "alterEgo": "Steve Rogers"
         }
     ],
     "test": [
         "Testa",
         "Busta",
         "Custa"
+    ],
+    "friends": [
+        {
+            "id": 1,
+            "name": "Jason"
+        },
+        {
+            "id": 2,
+            "name": "Dave"
+        },
+        {
+            "id": 3,
+            "name": "Yeet"
+        }
     ]
 }
